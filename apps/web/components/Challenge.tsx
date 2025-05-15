@@ -1,14 +1,50 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const Challenge = () => {
+  const particlesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Create particles for background effect
+    if (particlesRef.current) {
+      const particleCount = 20;
+      const container = particlesRef.current;
+
+      // Clear existing particles
+      container.innerHTML = "";
+
+      // Create new particles
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+
+        // Random position
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+
+        // Random size
+        const size = Math.random() * 6 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+
+        // Random opacity
+        particle.style.opacity = `${Math.random() * 0.4 + 0.1}`;
+
+        // Random animation delay
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+
+        container.appendChild(particle);
+      }
+    }
+  }, []);
   return (
-    <section
-      id="challenge"
-      className="section bg-wedlock-black relative overflow-hidden"
-    >
+    <section id="challenge" className="section  relative overflow-hidden ">
+      <div ref={particlesRef} className="particle-background"></div>
+      <div className="absolute top-1/3 right-[10%] w-96 h-96 mandala-pattern opacity-10 animate-float"></div>
+      <div className="absolute bottom-1/4 left-[5%] w-64 h-64 mandala-pattern opacity-5 animate-float"></div>
       {/* Subtle background patterns */}
       <div className="absolute inset-0 bg-hero-pattern opacity-5"></div>
-      <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-gradient-to-b from-wedlock-navy to-transparent"></div>
+      <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-gradient-to-b from-ShaadiVault-navy to-transparent"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto">
@@ -17,7 +53,7 @@ const Challenge = () => {
               Why Saving for{" "}
               <span className="gradient-text">Weddings Is Tough</span>
             </h2>
-            <p className="text-wedlock-gray max-w-2xl mx-auto">
+            <p className="text-ShaadiVault-gray max-w-2xl mx-auto">
               Indian weddings are celebrations of culture and tradition, but
               they also come with significant financial challenges. Traditional
               savings methods often fall short in keeping pace with rising costs
@@ -27,9 +63,9 @@ const Challenge = () => {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="feature-card opacity-0 animate-fade-in-delay-1">
-              <div className="mb-6 h-14 w-14 rounded-full bg-gradient-to-br from-wedlock-purple/20 to-wedlock-purple/10 flex items-center justify-center">
+              <div className="mb-6 h-14 w-14 rounded-full bg-gradient-to-br from-ShaadiVault-purple/20 to-ShaadiVault-purple/10 flex items-center justify-center">
                 <svg
-                  className="h-6 w-6 text-wedlock-purple"
+                  className="h-6 w-6 text-ShaadiVault-purple"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -48,26 +84,26 @@ const Challenge = () => {
                 The average Indian wedding costs between ₹15-50 lakh, consuming
                 20-50% of a family's annual household income.
               </p>
-              <div className="bg-wedlock-navy/30 p-4 rounded-lg">
+              <div className="bg-ShaadiVault-navy/30 p-4 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-wedlock-gray">
+                  <span className="text-sm text-ShaadiVault-gray">
                     Average Wedding Cost
                   </span>
-                  <span className="text-wedlock-teal font-semibold">
+                  <span className="text-ShaadiVault-teal font-semibold">
                     ₹25 Lakh
                   </span>
                 </div>
-                <div className="w-full bg-wedlock-navy/50 rounded-full h-2">
+                <div className="w-full bg-ShaadiVault-navy/50 rounded-full h-2">
                   <div
-                    className="bg-gradient-to-r from-wedlock-teal to-wedlock-purple h-2 rounded-full"
+                    className="bg-gradient-to-r from-ShaadiVault-teal to-ShaadiVault-purple h-2 rounded-full"
                     style={{ width: "60%" }}
                   ></div>
                 </div>
                 <div className="flex justify-between mt-1">
-                  <span className="text-xs text-wedlock-gray">
+                  <span className="text-xs text-ShaadiVault-gray">
                     Annual Income
                   </span>
-                  <span className="text-xs text-wedlock-gray">
+                  <span className="text-xs text-ShaadiVault-gray">
                     Wedding Cost
                   </span>
                 </div>
@@ -75,9 +111,9 @@ const Challenge = () => {
             </div>
 
             <div className="feature-card opacity-0 animate-fade-in-delay-2">
-              <div className="mb-6 h-14 w-14 rounded-full bg-gradient-to-br from-wedlock-teal/20 to-wedlock-teal/10 flex items-center justify-center">
+              <div className="mb-6 h-14 w-14 rounded-full bg-gradient-to-br from-ShaadiVault-teal/20 to-ShaadiVault-teal/10 flex items-center justify-center">
                 <svg
-                  className="h-6 w-6 text-wedlock-teal"
+                  className="h-6 w-6 text-ShaadiVault-teal"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -98,22 +134,22 @@ const Challenge = () => {
                 Traditional banking and fixed deposits offer low returns of 4-6%
                 APY, which often fail to beat inflation rates of 6-7%.
               </p>
-              <div className="bg-wedlock-navy/30 p-4 rounded-lg">
+              <div className="bg-ShaadiVault-navy/30 p-4 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-wedlock-gray">
+                  <span className="text-sm text-ShaadiVault-gray">
                     Traditional Returns
                   </span>
                   <span className="text-red-400 font-semibold">4-6% APY</span>
                 </div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-wedlock-gray">
+                  <span className="text-sm text-ShaadiVault-gray">
                     Inflation Rate
                   </span>
                   <span className="text-orange-400 font-semibold">6-7%</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-wedlock-gray">
-                    WedLock Yield
+                  <span className="text-sm text-ShaadiVault-gray">
+                    ShaadiVault Yield
                   </span>
                   <span className="text-green-400 font-semibold">
                     8-12% APY
@@ -123,11 +159,11 @@ const Challenge = () => {
             </div>
           </div>
 
-          <div className="mt-12 p-6 bg-gradient-to-br from-wedlock-navy to-wedlock-black rounded-xl border border-wedlock-purple/10 card-shadow opacity-0 animate-fade-in-delay-3">
+          <div className="mt-12 p-6 bg-gradient-to-br from-ShaadiVault-navy to-ShaadiVault-black rounded-xl border border-ShaadiVault-purple/10 card-shadow opacity-0 animate-fade-in-delay-3">
             <div className="flex flex-col md:flex-row items-center">
-              <div className="mb-6 md:mb-0 md:mr-6 h-16 w-16 rounded-full bg-wedlock-purple/20 flex items-center justify-center flex-shrink-0">
+              <div className="mb-6 md:mb-0 md:mr-6 h-16 w-16 rounded-full bg-ShaadiVault-purple/20 flex items-center justify-center flex-shrink-0">
                 <svg
-                  className="h-8 w-8 text-wedlock-purple"
+                  className="h-8 w-8 text-ShaadiVault-purple"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -147,7 +183,7 @@ const Challenge = () => {
                 </h3>
                 <p>
                   Weddings cost{" "}
-                  <span className="text-wedlock-white">
+                  <span className="text-ShaadiVault-white">
                     20-50% of annual household income
                   </span>
                   , forcing families to compromise on dreams or take on debt.

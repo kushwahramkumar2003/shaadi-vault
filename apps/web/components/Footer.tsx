@@ -1,260 +1,232 @@
 import React from "react";
-import { Twitter, Github, MessageCircle } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { FaDiscord, FaGithub, FaXTwitter, FaTelegram } from "react-icons/fa6";
+import { SiSolana } from "react-icons/si";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
+  // Footer links organized by sections
+  const footerLinks = [
+    {
+      title: "Product",
+      links: [
+        { name: "Features", href: "#" },
+        { name: "Security", href: "#" },
+        { name: "Roadmap", href: "#" },
+        { name: "Fees", href: "#" },
+        { name: "Staking", href: "#" },
+      ],
+    },
+    {
+      title: "Company",
+      links: [
+        { name: "About Us", href: "#" },
+        { name: "Careers", href: "#" },
+        { name: "Blog", href: "#" },
+        { name: "Contact", href: "#" },
+        { name: "Partners", href: "#" },
+      ],
+    },
+    {
+      title: "Resources",
+      links: [
+        { name: "Documentation", href: "#" },
+        { name: "Help Center", href: "#" },
+        { name: "FAQ", href: "#" },
+        { name: "Privacy Policy", href: "#" },
+        { name: "Terms of Service", href: "#" },
+      ],
+    },
+  ];
+
+  // Social media links
+  const socialLinks = [
+    { icon: <FaXTwitter size={20} />, name: "Twitter", href: "#" },
+    { icon: <FaDiscord size={20} />, name: "Discord", href: "#" },
+    { icon: <FaGithub size={20} />, name: "GitHub", href: "#" },
+    { icon: <FaTelegram size={20} />, name: "Telegram", href: "#" },
+  ];
+
   return (
-    <footer className="bg-wedlock-black relative overflow-hidden">
-      {/* Top border gradient */}
-      <div className="h-px bg-gradient-to-r from-wedlock-teal via-wedlock-purple to-wedlock-teal"></div>
+    <footer className="relative overflow-hidden bg-gradient-to-b from-black to-[#0c111d]">
+      {/* Glowing border effect */}
+      <div className="h-px bg-gradient-to-r from-purple-600 via-[#14F195] to-[#9945FF]"></div>
 
-      {/* Subtle background patterns */}
-      <div className="absolute inset-0 bg-hero-pattern opacity-5"></div>
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5"></div>
 
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-1">
-            <a href="#" className="flex items-center mb-6">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-wedlock-teal to-wedlock-purple flex items-center justify-center mr-3">
-                <span className="font-bold text-white text-lg">W</span>
-              </div>
-              <div>
-                <span className="font-bold text-xl text-white">WedLock</span>
-                <span className="font-bold text-xl gradient-text"> Wealth</span>
-              </div>
-            </a>
+      {/* Glow effect */}
+      <div className="absolute -top-32 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-[#14F195] opacity-10 blur-3xl"></div>
 
-            <p className="text-wedlock-gray text-sm mb-6">
+      <div className="container relative mx-auto px-4 py-12 md:px-6 lg:py-16">
+        {/* Desktop footer */}
+        <div className="hidden md:grid md:grid-cols-12 md:gap-8">
+          {/* Logo and description section */}
+          <div className="col-span-12 md:col-span-4 lg:col-span-5">
+            <Link href="/" className="flex items-center space-x-2">
+              <SiSolana className="h-8 w-8 text-[#14F195]" />
+              <span className="bg-gradient-to-r from-[#14F195] to-[#9945FF] bg-clip-text text-2xl font-bold text-transparent">
+                Shaadi Vault
+              </span>
+            </Link>
+
+            <p className="mt-4 max-w-md text-sm text-gray-400">
               Secure, high-yield savings for Indian families, powered by
-              Solana's DeFi technology.
+              Solana&apos;s DeFi technology. Building the future of financial
+              security with blockchain innovation.
             </p>
 
-            <div className="flex space-x-4">
-              <a
-                href="#"
-                className="text-wedlock-gray hover:text-wedlock-teal transition-colors"
-              >
-                <Twitter size={20} />
-                <span className="sr-only">Twitter</span>
-              </a>
-              <a
-                href="#"
-                className="text-wedlock-gray hover:text-wedlock-teal transition-colors"
-              >
-                <Github size={20} />
-                <span className="sr-only">GitHub</span>
-              </a>
-              <a
-                href="#"
-                className="text-wedlock-gray hover:text-wedlock-teal transition-colors"
-              >
-                <MessageCircle size={20} />
-                <span className="sr-only">Discord</span>
-              </a>
+            <div className="mt-6 flex flex-wrap items-center gap-6">
+              {socialLinks.map((social, index) => (
+                <Link
+                  key={index}
+                  href={social.href}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:bg-[#14F195]/20 hover:text-[#14F195]"
+                  aria-label={social.name}
+                >
+                  {social.icon}
+                </Link>
+              ))}
             </div>
           </div>
 
-          <div>
-            <h3 className="font-semibold text-white mb-4">Product</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  className="text-wedlock-gray hover:text-wedlock-white transition-colors text-sm"
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-wedlock-gray hover:text-wedlock-white transition-colors text-sm"
-                >
-                  Security
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-wedlock-gray hover:text-wedlock-white transition-colors text-sm"
-                >
-                  Roadmap
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-wedlock-gray hover:text-wedlock-white transition-colors text-sm"
-                >
-                  Fees
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-white mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  className="text-wedlock-gray hover:text-wedlock-white transition-colors text-sm"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-wedlock-gray hover:text-wedlock-white transition-colors text-sm"
-                >
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-wedlock-gray hover:text-wedlock-white transition-colors text-sm"
-                >
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-wedlock-gray hover:text-wedlock-white transition-colors text-sm"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-white mb-4">Resources</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  className="text-wedlock-gray hover:text-wedlock-white transition-colors text-sm"
-                >
-                  Documentation
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-wedlock-gray hover:text-wedlock-white transition-colors text-sm"
-                >
-                  Help Center
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-wedlock-gray hover:text-wedlock-white transition-colors text-sm"
-                >
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-wedlock-gray hover:text-wedlock-white transition-colors text-sm"
-                >
-                  Privacy Policy
-                </a>
-              </li>
-            </ul>
+          {/* Links sections */}
+          <div className="col-span-12 mt-8 grid grid-cols-3 gap-8 md:col-span-8 md:mt-0 lg:col-span-7">
+            {footerLinks.map((section, index) => (
+              <div key={index}>
+                <h3 className="font-semibold text-white">{section.title}</h3>
+                <Separator className="mb-4 mt-2 bg-gray-800" />
+                <ul className="space-y-3">
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-gray-400 transition-colors hover:text-[#14F195]"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-wedlock-navy/50">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p className="text-wedlock-gray text-sm">
-                © 2025 Shaadi Vault. All rights reserved.
+        {/* Mobile footer (accordion) */}
+        <div className="md:hidden">
+          <Link href="/" className="flex items-center space-x-2">
+            <SiSolana className="h-8 w-8 text-[#14F195]" />
+            <span className="bg-gradient-to-r from-[#14F195] to-[#9945FF] bg-clip-text text-2xl font-bold text-transparent">
+              Shaadi Vault
+            </span>
+          </Link>
+
+          <p className="mt-4 text-sm text-gray-400">
+            Secure, high-yield savings for Indian families, powered by Solana&apos;s
+            DeFi technology.
+          </p>
+
+          <Accordion type="single" collapsible className="mt-6 w-full">
+            {footerLinks.map((section, index) => (
+              <AccordionItem
+                key={index}
+                value={`section-${index}`}
+                className="border-gray-800"
+              >
+                <AccordionTrigger className="text-white hover:text-[#14F195] hover:no-underline">
+                  {section.title}
+                </AccordionTrigger>
+                <AccordionContent>
+                  <ul className="ml-1 space-y-3">
+                    {section.links.map((link, linkIndex) => (
+                      <li key={linkIndex}>
+                        <Link
+                          href={link.href}
+                          className="text-sm text-gray-400 transition-colors hover:text-[#14F195]"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+
+          <div className="mt-8 flex justify-center space-x-4">
+            {socialLinks.map((social, index) => (
+              <Link
+                key={index}
+                href={social.href}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:bg-[#14F195]/20 hover:text-[#14F195]"
+                aria-label={social.name}
+              >
+                {social.icon}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Newsletter subscription (both mobile and desktop) */}
+        <div className="mt-12 rounded-xl bg-gray-900/50 p-6 backdrop-blur-sm">
+          <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:items-center">
+            <div>
+              <h3 className="text-lg font-semibold text-white">
+                Stay updated with Shaadi Vault
+              </h3>
+              <p className="mt-1 text-sm text-gray-400">
+                Get the latest news and updates about our products and DeFi
+                innovations
               </p>
             </div>
-
-            <div className="flex items-center">
-              <span className="text-wedlock-gray text-sm mr-2">Powered by</span>
-              <svg
-                width="90"
-                height="18"
-                viewBox="0 0 100 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            <div className="flex w-full flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0 lg:w-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="rounded-lg border border-gray-700 bg-gray-800 px-4 py-2 text-sm text-white placeholder-gray-500 focus:border-[#14F195] focus:outline-none"
+              />
+              <Button
+                variant="default"
+                className="bg-gradient-to-r from-[#14F195] to-[#9945FF] text-white hover:opacity-90"
               >
-                <path
-                  d="M14.0002 16.0002L18.2 11.8002C18.9 11.1002 18.9 9.9002 18.2 9.2002L14.0002 5.0002"
-                  stroke="url(#solana-gradient)"
-                  strokeWidth="2"
-                  strokeMiterlimit="10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M22.0002 19.0002L32.2002 8.8002C32.9002 8.1002 32.9002 6.9002 32.2002 6.2002L22.0002 -3.8147e-05"
-                  stroke="url(#solana-gradient)"
-                  strokeWidth="2"
-                  strokeMiterlimit="10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M35.0002 19.0002L45.2002 8.8002C45.9002 8.1002 45.9002 6.9002 45.2002 6.2002L35.0002 -3.8147e-05"
-                  stroke="url(#solana-gradient)"
-                  strokeWidth="2"
-                  strokeMiterlimit="10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M52.884 4.68H56.292L60.972 14.94H57.348L56.616 13.116H52.452L51.708 14.94H48.204L52.884 4.68ZM55.86 10.836L54.552 7.632L53.196 10.836H55.86Z"
-                  fill="url(#solana-text)"
-                />
-                <path
-                  d="M69.4113 12.216L70.7193 14.004C69.6273 14.748 68.1993 15.18 66.6993 15.18C63.4113 15.18 60.9993 13.068 60.9993 9.84C60.9993 6.636 63.4113 4.488 66.5793 4.488C67.9673 4.488 69.1793 4.86 70.2113 5.604L68.9993 7.464C68.3193 7.008 67.5353 6.78 66.6753 6.78C64.9673 6.78 63.7673 8.028 63.7673 9.84C63.7673 11.652 64.9913 12.888 66.8353 12.888C67.9073 12.888 68.7953 12.66 69.4113 12.216Z"
-                  fill="url(#solana-text)"
-                />
-                <path
-                  d="M81.3775 14.94H78.8255V10.908H75.3055V14.94H72.7535V4.68H75.3055V8.64H78.8255V4.68H81.3775V14.94Z"
-                  fill="url(#solana-text)"
-                />
-                <path
-                  d="M90.9743 14.94H83.5983V4.68H90.8783V6.924H86.1503V8.604H90.4583V10.848H86.1503V12.696H90.9743V14.94Z"
-                  fill="url(#solana-text)"
-                />
-                <path
-                  d="M100 4.68V14.94H97.82L93.596 9.288V14.94H91.044V4.68H93.224L97.448 10.332V4.68H100Z"
-                  fill="url(#solana-text)"
-                />
-                <defs>
-                  <linearGradient
-                    id="solana-gradient"
-                    x1="14"
-                    y1="10"
-                    x2="45.2002"
-                    y2="10"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#00C4B4" />
-                    <stop offset="1" stopColor="#6B5BFF" />
-                  </linearGradient>
-                  <linearGradient
-                    id="solana-text"
-                    x1="48.204"
-                    y1="9.83403"
-                    x2="100"
-                    y2="9.83403"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#00C4B4" />
-                    <stop offset="1" stopColor="#6B5BFF" />
-                  </linearGradient>
-                </defs>
-              </svg>
+                Subscribe
+              </Button>
             </div>
+          </div>
+        </div>
+
+        {/* Copyright and powered by section */}
+        <div className="mt-12 flex flex-col items-center justify-between space-y-4 pt-8 text-center md:flex-row md:text-left">
+          <p className="text-sm text-gray-500">
+            © {new Date().getFullYear()} Shaadi Vault. All rights reserved.
+          </p>
+
+          <div className="flex items-center space-x-1">
+            <span className="text-sm text-gray-500">Powered by</span>
+            <Link
+              href="https://solana.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center"
+            >
+              <Image
+                src="/solanaLogo.svg"
+                width={100}
+                height={20}
+                alt="Solana Logo"
+                className="transition-transform group-hover:scale-105"
+              />
+            </Link>
           </div>
         </div>
       </div>

@@ -1,200 +1,476 @@
-import React from "react";
-import { Shield, Percent, PiggyBank, Target } from "lucide-react";
+"use client";
+import React, { useEffect, useRef } from "react";
+import {
+  Shield,
+  Percent,
+  PiggyBank,
+  Target,
+  TrendingUp,
+  ArrowRight,
+  Crown,
+  BadgeCheck,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { cn } from "@/lib/utils";
 
 const Solution = () => {
   const features = [
     {
-      icon: <PiggyBank className="h-6 w-6 text-zinc-200" />,
+      icon: <PiggyBank className="h-6 w-6 text-white" />,
       title: "Stablecoin Stability",
       description:
         "Save in USDC and USDT stablecoins that maintain their value, reducing volatility while your savings grow.",
-      color: "zinc-700",
+      color: "from-teal-500/20 to-teal-700/20",
+      iconBg: "from-teal-400 to-teal-600",
     },
     {
-      icon: <Percent className="h-6 w-6 text-zinc-200" />,
+      icon: <Percent className="h-6 w-6 text-white" />,
       title: "Automated Yield",
       description:
         "Our smart contracts automatically allocate your funds to the highest-yielding DeFi protocols on Solana.",
-      color: "zinc-800",
+      color: "from-purple-500/20 to-purple-700/20",
+      iconBg: "from-purple-400 to-purple-600",
+      badge: "Popular",
     },
     {
-      icon: <Shield className="h-6 w-6 text-zinc-200" />,
+      icon: <Shield className="h-6 w-6 text-white" />,
       title: "Secure Savings",
       description:
         "Multi-signature wallets and audited smart contracts protect your funds with institutional-grade security.",
-      color: "zinc-700",
+      color: "from-blue-500/20 to-blue-700/20",
+      iconBg: "from-blue-400 to-blue-600",
     },
     {
-      icon: <Target className="h-6 w-6 text-zinc-200" />,
+      icon: <Target className="h-6 w-6 text-white" />,
       title: "Customized Goals",
       description:
         "Set your wedding date and budget goals, and we'll optimize your yield strategy to help you get there.",
-      color: "zinc-800",
+      color: "from-emerald-500/20 to-emerald-700/20",
+      iconBg: "from-emerald-400 to-emerald-600",
     },
   ];
 
-  return (
-    <section id="features" className="section relative overflow-hidden py-24">
-      {/* Modern subtle background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 to-zinc-950 opacity-90"></div>
-      <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-zinc-800/10 blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-zinc-700/10 blur-3xl"></div>
+  const comparisonData = [
+    {
+      name: "Traditional Bank FD",
+      percent: 40,
+      rate: "4-6%",
+      color: "bg-slate-400",
+    },
+    {
+      name: "Gold Investment",
+      percent: 55,
+      rate: "5-8%",
+      color: "bg-amber-500",
+    },
+    {
+      name: "Shaadi Vault",
+      percent: 85,
+      rate: "8-12%",
+      color: "bg-gradient-to-r from-teal-400 to-purple-600",
+    },
+  ];
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16 opacity-0 animate-fade-in">
-          <h2 className="mb-6 text-3xl md:text-4xl font-bold text-white">
+  const particlesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Create particles for background effect
+    if (particlesRef.current) {
+      const particleCount = 20;
+      const container = particlesRef.current;
+
+      // Clear existing particles
+      container.innerHTML = "";
+
+      // Create new particles
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+
+        // Random position
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+
+        // Random size
+        const size = Math.random() * 6 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+
+        // Random opacity
+        particle.style.opacity = `${Math.random() * 0.4 + 0.1}`;
+
+        // Random animation delay
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+
+        container.appendChild(particle);
+      }
+    }
+  }, []);
+
+  return (
+    <section id="features" className="relative overflow-hidden py-24 lg:py-32">
+      {/* Enhanced background elements */}
+      <div ref={particlesRef} className="particle-background"></div>
+      <div className="absolute inset-0 opacity-90"></div>
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-500/20 to-transparent"></div>
+
+      {/* Decorative blurs */}
+      <div className="absolute -top-80 -right-80 w-96 h-96 rounded-full bg-purple-600/10 blur-3xl"></div>
+      <div className="absolute -bottom-80 -left-80 w-96 h-96 rounded-full bg-teal-600/10 blur-3xl"></div>
+      <div className="absolute top-1/3 left-1/4 w-64 h-64 rounded-full bg-blue-600/5 blur-3xl"></div>
+
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <Badge className="mb-4 bg-gradient-to-r from-teal-400/20 to-purple-600/20 text-white border-teal-500/20 backdrop-blur-sm hover:from-teal-400/30 hover:to-purple-600/30 hover:border-teal-500/30 transition-all duration-300">
+            Innovative DeFi Solutions
+          </Badge>
+
+          <h2 className="mb-6 text-3xl md:text-4xl lg:text-5xl font-bold text-white">
             Shaadi Vault:{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-200 to-zinc-400">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-purple-600">
               Smarter Wedding Savings
             </span>
           </h2>
-          <p className="text-zinc-300">
-            Our DeFi platform uses Solana's blockchain technology to provide
+
+          <p className="text-white/70 text-lg">
+            Our DeFi platform uses Solana&apos;s blockchain technology to provide
             secure, high-yield savings for wedding planning. With stablecoin
             deposits, automated yield strategies, and user-friendly design, we
             make building your wedding fund simple and rewarding.
           </p>
         </div>
 
+        {/* Feature Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
-            <div
+            <Card
               key={index}
-              className={`bg-gradient-to-b from-zinc-800/70 to-zinc-900/90 backdrop-blur-sm rounded-xl p-6 border border-zinc-700/20 
-                shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] opacity-0 animate-fade-in-delay-${index + 1}`}
+              className={cn(
+                "bg-black/40 backdrop-blur-sm border-0 overflow-hidden relative group hover:shadow-xl transition-all duration-300 hover:-translate-y-1",
+                "before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-white/0 before:rounded-lg",
+                "after:absolute after:inset-0 after:rounded-lg after:bg-gradient-to-br",
+                `after:${feature.color}`,
+                "after:opacity-30 after:hover:opacity-40 after:transition-opacity"
+              )}
             >
-              <div
-                className={`mb-6 h-14 w-14 rounded-full bg-gradient-to-br from-${feature.color}/30 to-${feature.color}/20 flex items-center justify-center`}
-              >
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-white">
-                {feature.title}
-              </h3>
-              <p className="text-zinc-400">{feature.description}</p>
-            </div>
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+              <CardHeader>
+                <div className="flex justify-between items-start">
+                  <div
+                    className={cn(
+                      "h-12 w-12 rounded-lg bg-gradient-to-br flex items-center justify-center shadow-lg",
+                      feature.iconBg
+                    )}
+                  >
+                    {feature.icon}
+                  </div>
+
+                  {feature.badge && (
+                    <Badge className="bg-gradient-to-r from-purple-400/20 to-purple-600/20 text-purple-300 border-purple-500/20">
+                      {feature.badge}
+                    </Badge>
+                  )}
+                </div>
+                <CardTitle className="text-xl font-semibold mt-4 text-white group-hover:text-white/90 transition-colors">
+                  {feature.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-white/60 group-hover:text-white/70 transition-colors">
+                  {feature.description}
+                </p>
+              </CardContent>
+              <CardFooter>
+                <HoverCard>
+                  <HoverCardTrigger asChild>
+                    <Button
+                      variant="link"
+                      className="text-white/70 p-0 hover:text-teal-400 flex items-center gap-1"
+                    >
+                      Learn more <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </HoverCardTrigger>
+                  <HoverCardContent className="w-80 bg-black/80 border border-white/10 backdrop-blur-lg text-white">
+                    <div className="space-y-2">
+                      <h4 className="text-sm font-medium">{feature.title}</h4>
+                      <p className="text-xs text-white/70">
+                        {feature.description} Our technologies ensure optimal
+                        performance while maintaining security and transparency.
+                      </p>
+                    </div>
+                  </HoverCardContent>
+                </HoverCard>
+              </CardFooter>
+            </Card>
           ))}
         </div>
 
-        <div className="mt-20 max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-zinc-900 to-zinc-950 rounded-2xl p-8 border border-zinc-800/30 shadow-2xl relative overflow-hidden opacity-0 animate-fade-in-delay-3">
-            {/* Modern decorative elements */}
-            <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-zinc-700/10 blur-3xl"></div>
-            <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-zinc-600/10 blur-3xl"></div>
+        {/* Comparison Section */}
+        <div className="mt-24 max-w-5xl mx-auto">
+          <Card className="bg-black/40 backdrop-blur-sm border border-white/10 shadow-2xl relative overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full bg-purple-600/10 blur-3xl"></div>
+            <div className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full bg-teal-600/10 blur-3xl"></div>
 
-            <div className="flex flex-col md:flex-row items-center relative z-10">
-              <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
-                <h3 className="text-2xl font-semibold mb-4 text-white">
-                  How WedLock Compares
-                </h3>
-                <p className="mb-6 text-zinc-400">
-                  Our DeFi platform consistently delivers higher returns than
-                  traditional savings methods while maintaining strong security
-                  protections.
-                </p>
-                <div className="bg-zinc-800/50 p-5 rounded-xl backdrop-blur-sm">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm text-zinc-300">
-                      Traditional Bank FD
-                    </span>
-                    <div className="flex items-center">
-                      <div className="w-24 h-2 bg-zinc-700 rounded-full mr-2">
-                        <div
-                          className="h-full rounded-full bg-zinc-500"
-                          style={{ width: "40%" }}
-                        ></div>
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-500/30 to-transparent"></div>
+
+            <CardHeader>
+              <Badge className="w-fit mb-2 bg-gradient-to-r from-teal-400/20 to-purple-600/20 text-white border-teal-500/20">
+                Yield Comparison
+              </Badge>
+              <CardTitle className="text-2xl font-bold text-white">
+                How ShaadiVault Compares
+              </CardTitle>
+              <CardDescription className="text-white/70">
+                Our DeFi platform consistently delivers higher returns than
+                traditional savings methods while maintaining strong security
+                protections.
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent>
+              <Tabs defaultValue="comparison" className="w-full">
+                <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8 bg-black/50 border border-white/10">
+                  <TabsTrigger
+                    value="comparison"
+                    className="data-[state=active]:bg-white/10"
+                  >
+                    Comparison
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="calculator"
+                    className="data-[state=active]:bg-white/10"
+                  >
+                    Calculator
+                  </TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="comparison" className="mt-0">
+                  <div className="flex flex-col lg:flex-row">
+                    <div className="lg:w-1/2 mb-8 lg:mb-0 lg:pr-8">
+                      <div className="space-y-6 bg-white/5 rounded-xl p-6 backdrop-blur-sm">
+                        {comparisonData.map((item, index) => (
+                          <div key={index} className="space-y-2">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                {index === 2 && (
+                                  <Crown className="h-4 w-4 text-yellow-500" />
+                                )}
+                                <span className="text-sm text-white/80">
+                                  {item.name}
+                                </span>
+                              </div>
+                              <span className="text-sm font-medium text-white">
+                                {item.rate}
+                              </span>
+                            </div>
+                            <div className="relative">
+                              <Progress
+                                value={item.percent}
+                                className={`h-2 bg-white/10 ${item.color}`}
+                              />
+                              {index === 2 && (
+                                <span className="absolute top-1 right-0 transform translate-x-1/2 -translate-y-1/2 flex h-4 w-4">
+                                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-20"></span>
+                                  <span className="relative inline-flex rounded-full h-3 w-3 bg-purple-500"></span>
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+
+                        <div className="pt-4 border-t border-white/10 mt-6">
+                          <div className="flex items-center gap-2">
+                            <BadgeCheck className="h-5 w-5 text-teal-400" />
+                            <span className="text-white font-medium">
+                              ShaadiVault Advantages
+                            </span>
+                          </div>
+                          <ul className="mt-3 space-y-2 text-sm text-white/70">
+                            <li className="flex items-center gap-2">
+                              <div className="h-1.5 w-1.5 rounded-full bg-teal-400"></div>
+                              <span>
+                                Higher yield through optimized DeFi protocols
+                              </span>
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="h-1.5 w-1.5 rounded-full bg-teal-400"></div>
+                              <span>Daily compounding interest</span>
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="h-1.5 w-1.5 rounded-full bg-teal-400"></div>
+                              <span>No lock-in periods or penalties</span>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
-                      <span className="text-sm font-semibold text-zinc-400">
-                        4-6%
-                      </span>
+                    </div>
+
+                    <div className="lg:w-1/2 lg:pl-8 lg:border-l border-white/10">
+                      <div className="text-center bg-white/5 rounded-xl p-6 mb-6 backdrop-blur-sm">
+                        <p className="text-sm text-white/70 mb-1">
+                          Monthly Deposit
+                        </p>
+                        <p className="text-3xl font-bold text-white">₹10,000</p>
+                        <p className="text-xs text-white/50 mt-1">
+                          For 3 years (36 months)
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
+                          <CardHeader className="pb-3">
+                            <CardTitle className="text-lg text-white">
+                              Bank Savings
+                            </CardTitle>
+                            <CardDescription className="text-white/50">
+                              3 Years at 5% APY
+                            </CardDescription>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="flex items-baseline">
+                              <span className="text-2xl font-bold text-white">
+                                ₹3.98
+                              </span>
+                              <span className="text-white ml-1">Lakh</span>
+                            </div>
+                            <p className="text-xs text-white/50 mt-1">
+                              Total: ₹3,98,000
+                            </p>
+                          </CardContent>
+                        </Card>
+
+                        <Card className="bg-gradient-to-br from-black/40 to-black/60 border border-white/10 backdrop-blur-sm relative overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-r from-teal-400/10 to-purple-600/10"></div>
+                          <CardHeader className="pb-3 relative z-10">
+                            <div className="flex items-center justify-between">
+                              <CardTitle className="text-lg text-white">
+                                ShaadiVault Savings
+                              </CardTitle>
+                              <Badge className="bg-gradient-to-r from-teal-400 to-purple-600 border-none text-white">
+                                +8.5%
+                              </Badge>
+                            </div>
+                            <CardDescription className="text-white/50">
+                              3 Years at 10% APY
+                            </CardDescription>
+                          </CardHeader>
+                          <CardContent className="relative z-10">
+                            <div className="flex items-baseline">
+                              <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-600">
+                                ₹4.32
+                              </span>
+                              <span className="text-white ml-1">Lakh</span>
+                            </div>
+                            <p className="text-xs text-white/50 mt-1">
+                              Total: ₹4,32,000
+                            </p>
+                          </CardContent>
+                          <div className="absolute top-0 right-0">
+                            <svg
+                              width="103"
+                              height="101"
+                              viewBox="0 0 103 101"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="opacity-20"
+                            >
+                              <path
+                                d="M102.5 0.5V72C102.5 87.74 89.74 100.5 74 100.5H0.5L102.5 0.5Z"
+                                stroke="url(#paint0_linear_0_1)"
+                              />
+                              <defs>
+                                <linearGradient
+                                  id="paint0_linear_0_1"
+                                  x1="51.5"
+                                  y1="0.5"
+                                  x2="51.5"
+                                  y2="100.5"
+                                  gradientUnits="userSpaceOnUse"
+                                >
+                                  <stop stopColor="#5eead4" />
+                                  <stop offset="1" stopColor="#9333ea" />
+                                </linearGradient>
+                              </defs>
+                            </svg>
+                          </div>
+                        </Card>
+                      </div>
+
+                      <div className="mt-6 text-center bg-gradient-to-r from-teal-400/10 to-purple-600/10 rounded-xl p-6 backdrop-blur-sm border border-white/5">
+                        <div className="flex items-center justify-center gap-2 mb-2">
+                          <TrendingUp className="h-5 w-5 text-teal-400" />
+                          <p className="font-medium text-white text-lg">
+                            Extra ₹34,000 for your wedding
+                          </p>
+                        </div>
+                        <p className="text-sm text-white/70 mb-4">
+                          With the same monthly contribution
+                        </p>
+
+                        <Button className="bg-gradient-to-r from-teal-400 to-purple-600 hover:opacity-90 text-white border-none shadow-lg transition-all duration-300">
+                          Start Saving Now
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm text-zinc-300">
-                      Gold Investment
-                    </span>
-                    <div className="flex items-center">
-                      <div className="w-24 h-2 bg-zinc-700 rounded-full mr-2">
-                        <div
-                          className="h-full rounded-full bg-amber-500/60"
-                          style={{ width: "50%" }}
-                        ></div>
-                      </div>
-                      <span className="text-sm font-semibold text-amber-400">
-                        5-8%
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-zinc-300">Shaadi Vault</span>
-                    <div className="flex items-center">
-                      <div className="w-24 h-2 bg-zinc-700 rounded-full mr-2">
-                        <div
-                          className="h-full rounded-full bg-gradient-to-r from-zinc-300 to-zinc-500"
-                          style={{ width: "80%" }}
-                        ></div>
-                      </div>
-                      <span className="text-sm font-semibold text-zinc-300">
-                        8-12%
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </TabsContent>
 
-              <div className="md:w-1/2 md:pl-8 md:border-l border-zinc-700/50">
-                <div className="bg-zinc-800/30 rounded-xl p-5 mb-5 backdrop-blur-sm">
-                  <div className="text-center">
-                    <p className="text-sm text-zinc-400 mb-1">
-                      Monthly Deposit
-                    </p>
-                    <p className="text-xl font-semibold text-white">₹10,000</p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-5">
-                  <div className="bg-zinc-800/30 rounded-xl p-5 backdrop-blur-sm">
-                    <p className="text-sm text-zinc-400 mb-1">
-                      Bank Savings (3 Years)
-                    </p>
-                    <p className="text-xl font-semibold text-white">
-                      ₹3.98 <span className="text-sm">Lakh</span>
-                    </p>
-                    <div className="mt-2 text-xs text-zinc-500">5% APY</div>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-zinc-800/40 to-zinc-900/40 rounded-xl p-5 backdrop-blur-sm relative overflow-hidden border border-zinc-700/30">
-                    <div className="absolute inset-0 bg-gradient-to-r from-zinc-400/5 to-zinc-600/5 opacity-70"></div>
-                    <div className="relative z-10">
-                      <p className="text-sm text-zinc-400 mb-1">
-                        WedLock (3 Years)
+                <TabsContent value="calculator" className="mt-0">
+                  <div className="text-center text-white py-8">
+                    <div className="max-w-md mx-auto bg-white/5 p-6 rounded-xl backdrop-blur-sm">
+                      <h3 className="text-xl font-medium mb-4">
+                        Savings Calculator
+                      </h3>
+                      <p className="text-white/70 mb-6">
+                        Estimate your potential wedding savings with our DeFi
+                        platform
                       </p>
-                      <p className="text-xl font-semibold text-white">
-                        ₹4.32 <span className="text-sm">Lakh</span>
-                      </p>
-                      <div className="mt-2 text-xs text-emerald-400">
-                        10% APY
+
+                      <div className="text-center space-y-4">
+                        <div className="flex items-center justify-center">
+                          <div className="w-16 h-16 rounded-full bg-gradient-to-r from-teal-400 to-purple-600 flex items-center justify-center">
+                            <TrendingUp className="h-8 w-8 text-white" />
+                          </div>
+                        </div>
+                        <p className="text-sm text-white/70">
+                          Coming soon! Our interactive calculator will help you
+                          plan your wedding savings.
+                        </p>
+                        <Button
+                          variant="outline"
+                          className="border-white/20 text-white hover:bg-white/10"
+                        >
+                          Get Notified
+                        </Button>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div className="mt-5 text-center">
-                  <p className="font-medium text-white">
-                    Extra ₹34,000 for your wedding
-                  </p>
-                  <p className="text-sm text-zinc-400">
-                    With same monthly contribution
-                  </p>
-
-                  <Button className="mt-4 bg-gradient-to-r from-zinc-700 to-zinc-800 text-white hover:from-zinc-600 hover:to-zinc-700 rounded-xl py-2.5 px-6 shadow-lg transition-all duration-300">
-                    Start Saving Now
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
+                </TabsContent>
+              </Tabs>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

@@ -68,8 +68,7 @@ export default {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
-        // Custom colors for Shaadi Vault
-        wedlock: {
+        ShaadiVault: {
           navy: "#1A1F2E",
           black: "#0A0A0A",
           purple: "#6B5BFF",
@@ -77,7 +76,6 @@ export default {
           white: "#FFFFFF",
           gray: "#D3D3D3",
         },
-        // Fallback standard colors
         navy: "#1a1f2e",
         black: "#0a0a0a",
       },
@@ -88,14 +86,21 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
-        // Custom animations for Shaadi Vault
         "fade-in": {
           "0%": {
             opacity: "0",
@@ -125,20 +130,47 @@ export default {
           },
         },
         "gradient-shift": {
-          "0%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "0% 50%" },
+          "0%": {
+            backgroundPosition: "0% 50%",
+          },
+          "50%": {
+            backgroundPosition: "100% 50%",
+          },
+          "100%": {
+            backgroundPosition: "0% 50%",
+          },
         },
         float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+          "0%, 100%": {
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(-10px)",
+          },
+        },
+        // eslint-disable-next-line no-dupe-keys
+        "accordion-down": {
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
+        },
+        // eslint-disable-next-line no-dupe-keys
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "gradient-shift": "gradient-shift 8s ease infinite",
-        // Custom animation classes
         "fade-in": "fade-in 0.6s ease-out forwards",
         "fade-in-delay-1": "fade-in 0.6s ease-out 0.2s forwards",
         "fade-in-delay-2": "fade-in 0.6s ease-out 0.4s forwards",
@@ -149,6 +181,10 @@ export default {
         "fade-in-up-delay-3": "fade-in-up 0.8s ease-out 0.6s forwards",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
         float: "float 5s ease-in-out infinite",
+        // eslint-disable-next-line no-dupe-keys
+        "accordion-down": "accordion-down 0.2s ease-out",
+        // eslint-disable-next-line no-dupe-keys
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
@@ -160,5 +196,6 @@ export default {
       },
     },
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports, no-undef
   plugins: [require("tailwindcss-animate")],
 };

@@ -4,19 +4,19 @@ import { Shield, Lock, Eye } from "lucide-react";
 const Security = () => {
   const securityFeatures = [
     {
-      icon: <Shield className="h-6 w-6 text-wedlock-teal" />,
+      icon: <Shield className="h-6 w-6 text-ShaadiVault-teal" />,
       title: "Audited Smart Contracts",
       description:
         "Our code is thoroughly audited by leading blockchain security firms to ensure maximum protection of your funds.",
     },
     {
-      icon: <Lock className="h-6 w-6 text-wedlock-purple" />,
+      icon: <Lock className="h-6 w-6 text-ShaadiVault-purple" />,
       title: "Optional Insurance",
       description:
         "Add an extra layer of protection with our optional DeFi insurance coverage for your deposits.",
     },
     {
-      icon: <Eye className="h-6 w-6 text-wedlock-teal" />,
+      icon: <Eye className="h-6 w-6 text-ShaadiVault-teal" />,
       title: "Transparent Yield Strategies",
       description:
         "We openly share which DeFi protocols your funds utilize, with full on-chain verification.",
@@ -24,13 +24,10 @@ const Security = () => {
   ];
 
   return (
-    <section
-      id="security"
-      className="section bg-wedlock-black relative overflow-hidden"
-    >
+    <section id="security" className="section  relative overflow-hidden">
       {/* Subtle background patterns */}
       <div className="absolute inset-0 bg-hero-pattern opacity-5"></div>
-      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-wedlock-navy/20 to-transparent"></div>
+      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-ShaadiVault-navy/20 to-transparent"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 opacity-0 animate-fade-in">
@@ -50,7 +47,7 @@ const Security = () => {
               key={index}
               className={`feature-card opacity-0 animate-fade-in-delay-${index + 1}`}
             >
-              <div className="mb-6 h-14 w-14 rounded-full bg-wedlock-navy/50 flex items-center justify-center">
+              <div className="mb-6 h-14 w-14 rounded-full bg-ShaadiVault-navy/50 flex items-center justify-center">
                 {feature.icon}
               </div>
 
@@ -60,17 +57,17 @@ const Security = () => {
           ))}
         </div>
 
-        <div className="mt-20 bg-gradient-to-br from-wedlock-navy to-wedlock-black rounded-2xl p-6 sm:p-10 border border-wedlock-purple/10 card-shadow relative overflow-hidden opacity-0 animate-fade-in-delay-3">
+        <div className="mt-20 bg-gradient-to-br from-ShaadiVault-navy to-ShaadiVault-black rounded-2xl p-6 sm:p-10 border border-ShaadiVault-purple/10 card-shadow relative overflow-hidden opacity-0 animate-fade-in-delay-3">
           {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-32 h-32 mandala-pattern opacity-5"></div>
-          <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-wedlock-purple/10 blur-3xl"></div>
+          <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-ShaadiVault-purple/10 blur-3xl"></div>
 
           <div className="flex flex-col md:flex-row items-center relative z-10">
             <div className="md:w-2/5 mb-8 md:mb-0">
-              <div className="bg-wedlock-navy p-6 rounded-xl border border-wedlock-purple/10">
+              <div className="bg-ShaadiVault-navy p-6 rounded-xl border border-ShaadiVault-purple/10">
                 <div className="flex justify-center mb-6">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-wedlock-navy to-wedlock-black p-1 shadow-lg">
-                    <div className="w-full h-full rounded-full bg-wedlock-black flex items-center justify-center overflow-hidden">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-ShaadiVault-navy to-ShaadiVault-black p-1 shadow-lg">
+                    <div className="w-full h-full rounded-full bg-ShaadiVault-black flex items-center justify-center overflow-hidden">
                       <svg
                         width="48"
                         height="48"
@@ -122,16 +119,16 @@ const Security = () => {
                 </h3>
                 <div className="flex justify-center mb-4">
                   <div className="flex">
-                    <span className="text-wedlock-teal">★</span>
-                    <span className="text-wedlock-teal">★</span>
-                    <span className="text-wedlock-teal">★</span>
-                    <span className="text-wedlock-teal">★</span>
-                    <span className="text-wedlock-teal">★</span>
+                    <span className="text-ShaadiVault-teal">★</span>
+                    <span className="text-ShaadiVault-teal">★</span>
+                    <span className="text-ShaadiVault-teal">★</span>
+                    <span className="text-ShaadiVault-teal">★</span>
+                    <span className="text-ShaadiVault-teal">★</span>
                   </div>
                 </div>
 
                 <div className="text-center">
-                  <p className="text-sm text-wedlock-gray">Verified by</p>
+                  <p className="text-sm text-ShaadiVault-gray">Verified by</p>
                   <p className="font-medium">CertiK & Hacken</p>
                 </div>
               </div>
@@ -158,10 +155,10 @@ const Security = () => {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-medium text-wedlock-white">
+                    <p className="font-medium text-ShaadiVault-white">
                       Multi-signature wallets
                     </p>
-                    <p className="text-sm text-wedlock-gray">
+                    <p className="text-sm text-ShaadiVault-gray">
                       Multiple authorization keys required for any fund
                       movements
                     </p>
@@ -183,10 +180,10 @@ const Security = () => {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-medium text-wedlock-white">
+                    <p className="font-medium text-ShaadiVault-white">
                       Timelock mechanisms
                     </p>
-                    <p className="text-sm text-wedlock-gray">
+                    <p className="text-sm text-ShaadiVault-gray">
                       Protocol changes require a 48-hour waiting period
                     </p>
                   </div>
@@ -207,10 +204,10 @@ const Security = () => {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-medium text-wedlock-white">
+                    <p className="font-medium text-ShaadiVault-white">
                       Regular security audits
                     </p>
-                    <p className="text-sm text-wedlock-gray">
+                    <p className="text-sm text-ShaadiVault-gray">
                       Continuous testing and independent verification of code
                     </p>
                   </div>
@@ -231,10 +228,10 @@ const Security = () => {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-medium text-wedlock-white">
+                    <p className="font-medium text-ShaadiVault-white">
                       Bug bounty program
                     </p>
-                    <p className="text-sm text-wedlock-gray">
+                    <p className="text-sm text-ShaadiVault-gray">
                       Rewards up to $250,000 for identifying security issues
                     </p>
                   </div>
